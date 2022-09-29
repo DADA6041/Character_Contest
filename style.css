@@ -1,3 +1,52 @@
+/* Animation */
+@keyframes ani-ear-left {
+    from{
+        transform: rotate(-5deg);
+    }
+    to {
+        transform: rotate(0deg) translate(10px);
+    }
+
+}
+
+@keyframes ani-ear-right {
+    from{
+        transform: rotate(5deg);
+    }
+    to {
+        transform: rotate(0deg) translate(-10px);
+    }
+}
+
+@keyframes eyebrow-left {
+    from{
+        transform: rotate(-20deg);
+    }
+    to {
+        transform: rotate(17deg);
+    }
+}
+
+@keyframes eyebrow-right {
+    from{
+        transform: rotate(20deg);
+    }
+    to {
+        transform: rotate(-17deg);
+    }
+}
+
+@keyframes mouth {
+    from {
+        transform: scale(0.7) translateY(-30px);
+    }
+
+    to {
+        transform: scale(1.2) ;
+    }
+}
+
+
 /* Setting */
 :root {
     --pri: #e28e52;
@@ -26,21 +75,22 @@ body{
     top: 50px;
     margin: auto;
     width: 340px;
-    height: 320px;
+    height: 1000px;
     /* background-color: aqua; */
 }
 
 .red-panda .face {
     position: absolute;
-    bottom: 0;
+    top: 60px;
     width: 340px;
     height: 270px;
     border-radius: 50% 50% 40% 40% / 58% 58% 42% 42%;
     background-color: var(--pri);
     border: 8px solid #000;
+    z-index: 10;
 }
 
-/* 귀 + 귀 애니메이션*/
+/* Ear + Ear animation*/
 .red-panda .ear {
 	position: absolute;
     top: 60px;
@@ -54,7 +104,15 @@ body{
 	background-color: #000;
 }
 
-/* 귀, 귀 겉라인 삼각형 만들기 */
+.red-panda .ear-wrap.left{
+    animation: ani-ear-left 1s infinite alternate;
+}
+
+.red-panda .ear-wrap.right{
+    animation: ani-ear-right 1s infinite alternate;
+}
+
+/* Ear, Ear outline triangle */
 .ear::before,
 .ear::after {
 	content: '';
@@ -110,7 +168,7 @@ body{
 	background-color: #000;
 }
 
-/* 귀 구멍 */
+/* Earhole */
 .red-panda .earhole{
     position: absolute;
     width: 70px;
@@ -134,7 +192,7 @@ body{
     right: 5px;
 }
 
-/* 얼굴 부분 */
+/* Face */
 .eyebrow{
     position: absolute;
     top: 90px;
@@ -148,11 +206,13 @@ body{
 .eyebrow.left{
     left: 95px;
     transform: rotate(17deg);
+    animation: eyebrow-left 1s infinite alternate;
 }
 
 .eyebrow.right{
     right: 95px;
     transform: rotate(-17deg);
+    animation: eyebrow-right 1s infinite alternate;
 }
 
 .eye{
@@ -225,7 +285,7 @@ body{
 }
 
 .mouth::before{
-    content: "";
+    content: '';
     position: absolute;
     width: 50px;
     height: 36px;
@@ -268,4 +328,99 @@ body{
     border: 7px solid black;
     border-radius: 30% 30% 40% 40%;
     background-color: coral;
+    animation: mouth 1s infinite alternate;
+}
+
+/* Body */
+.body{
+    position: absolute;
+    top: 300px;
+    left: 35px;
+    width: 270px;
+    height: 275px;
+    border-radius: 40% 40% 40% 40% / 60% 60% 40% 40%;
+    background-color: var(--sec);
+    border: 8px solid #000;
+}
+.body::before{
+    content: '';
+    position: absolute;
+    width: 74px;
+    height: 80px;
+    top: 200px;
+    left: 15px;
+    background: var(--sec);
+    z-index: 10;
+}
+.body::after{
+    content: '';
+    position: absolute;
+    width: 74px;
+    height: 80px;
+    top: 200px;
+    right: 15px;
+    background: var(--sec);
+    z-index: 10;
+}
+
+.arm{
+    position: absolute;
+    width: 90px;
+    height: 200px;
+    border-radius: 40% 40%;
+    background-color: var(--sec);
+    border: 8px solid #000;
+}
+
+.arm.left{
+    top: 220px;
+    left: -10px;
+    transform: rotate(-35deg);
+}
+.arm.right{
+    top: 220px;
+    right: -10px;
+    transform: rotate(35deg);
+}
+
+.arm.left::after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 35px;
+    top: 10px;
+    left: 15px;
+    background: var(--pri);
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: 10;
+}
+.arm.right::after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 35px;
+    top: 10px;
+    right: 15px;
+    background: var(--pri);
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.leg{
+    position: absolute;
+    width: 90px;
+    height: 200px;
+    border-radius: 40% 40%;
+    background-color: var(--sec);
+    border: 8px solid #000;
+}
+.leg.left{
+    top: 470px;
+    left: 50px;
+}
+.leg.right{
+    top: 470px;
+    right: 50px;
 }
